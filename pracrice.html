@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <my-component1></my-component1>
+    <my-component2></my-component2>
+  </div>
+
+  <script src="./js/vendor/vue.js"></script>
+  <script>
+    let cmd1 = {
+      template: '<div>첫 번째 지역 컴포넌트: {{cmd1Data}}</div>',
+      data: function() {
+        return {
+          cmd1Data: 100
+        }
+      }
+    };
+    let cmd2 = {
+      template: '<div>두 번째 지역 컴포넌트: {{cmd2Data}}</div>',
+      data: function() {
+        return {
+          cmd2Data: cmd1.data.cmd1Data
+        }
+      }
+    };
+    new Vue({
+      el: '#app',
+      components: {
+        'my-component1': cmd1,
+        'my-component2': cmd2
+      }
+    });
+  </script>
+</body>
+</html>
