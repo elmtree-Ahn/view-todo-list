@@ -9,22 +9,32 @@
 
 <body>
   <div id="app">
-    <button>컴포넌트 등록</button>
-    <test-el></test-el>
+    <child-component v-on:show-log="printText"></child-component>
   </div>
 
   <!-- SCRIPT -->
   <script src="./js/vendor/vue.js"></script>
   <script>
-    let change = {
-      template: "<p>드디어 이해했다!</p>"
-    }
-    new Vue ({
-      el: '#app',
-      components: {
-        'test-el': change 
+    Vue.component('child-component', {
+      template: '<button v-on:click="showLog">Show</button>',
+      methods: {
+        showLog: function() {
+          this.$emit('show-log');
+        }
       }
     });
+
+    let app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue! passed from Parent Component'
+      },
+      methods: {
+        printText: function() {
+          console.log("received an event");
+        }
+      }
+    })
   </script>
 </body>
 </html>
