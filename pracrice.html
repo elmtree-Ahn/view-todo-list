@@ -6,35 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <div id="app">
-    <my-component1></my-component1>
-    <my-component2></my-component2>
+    <button>컴포넌트 등록</button>
+    <test-el></test-el>
   </div>
 
+  <!-- SCRIPT -->
   <script src="./js/vendor/vue.js"></script>
   <script>
-    let cmd1 = {
-      template: '<div>첫 번째 지역 컴포넌트: {{cmd1Data}}</div>',
-      data: function() {
-        return {
-          cmd1Data: 100
-        }
-      }
-    };
-    let cmd2 = {
-      template: '<div>두 번째 지역 컴포넌트: {{cmd2Data}}</div>',
-      data: function() {
-        return {
-          cmd2Data: cmd1.data.cmd1Data
-        }
-      }
-    };
-    new Vue({
+    let change = {
+      template: "<p>드디어 이해했다!</p>"
+    }
+    new Vue ({
       el: '#app',
       components: {
-        'my-component1': cmd1,
-        'my-component2': cmd2
+        'test-el': change 
       }
     });
   </script>
