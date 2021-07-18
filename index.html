@@ -8,13 +8,10 @@
 </head>
 <body>
   <div id="app">
-    <header>
-      <h3>{{ message }}</h3>
-    </header>
-    <todo-footer></todo-footer>
-    <todo-list></todo-list>
-  
+    <child-component v-bind:propsdata='message'></child-component>
+    <sibling-component v-bind:propsdata='anotherMessage'></silbling-component>
   </div>
+
 
 <script src="./js/vendor/vue.js"></script>
 <script src="./js/app.js"></script>
