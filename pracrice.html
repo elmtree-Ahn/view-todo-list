@@ -8,10 +8,7 @@
   </head>
   <body>
     <div id="app">
-      <button v-on:click="clickBtn">클릭</button>
-      <button v-on:click="clickBtnAbout(10)">메서드 호출</button>
-      <button v-on:click="clickAccessDom">돔 접근</button>
-      <p>{{ reversedMessage }}</p>
+      <input v-model="message" />
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
@@ -20,22 +17,11 @@
       new Vue({
         el: '#app',
         data: {
-          message: "나는 뷰 개발자다!!"
+          message: 'Hello Vue.js!'
         },
-        methods: {
-          clickBtn: function(){
-            alert('나는 연봉 1억의 뷰 개발자 입니다');
-          },
-          clickBtnAbout: function(num){
-            alert(`나는 올 ${num}월에 뷰 개발자로 취직한다.`)
-          },
-          clickAccessDom: function(){
-            console.log(event);
-          }
-        },
-        computed: {
-          reversedMessage: function(){
-            return this.message.split('').reverse().join('');
+        watch: {
+          message: function(data) {
+            console.log("message의 값이 바뀝니다. : ", data);
           }
         }
       });
