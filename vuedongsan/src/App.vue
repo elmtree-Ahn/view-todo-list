@@ -1,5 +1,4 @@
 <template>
-
   <!-- 모달창 -->
   <div class="black-bg" v-if="모달창열렸니 == true">
     <div class="white-bg">
@@ -14,37 +13,23 @@
     <a v-for="(menu,i) in menus" :key="i">{{ menu }}</a>
   </div>
   <!-- 매물 -->
-  <div>
-    <img src="./assets/room0.jpg" class="room-img">
-    <h4 @click="모달창열렸니 = true">{{ products[0] }}</h4>
-    <p>월세 {{ price[0] }} 만원</p>
-    <button @click="신고수[0]++">허위매물신고</button>
-    <span> 신고수 : {{ 신고수[0] }}</span>
-  </div>
-      <img src="./assets/room1.jpg" class="room-img">
-    <div>
-    <h4>{{ products[1] }}</h4>
-    <p>월세 {{ price[1] }} 만원</p>
-    <button @click="신고수[1]++">허위매물신고</button>
-    <span> 신고수 : {{ 신고수[1] }}</span>
-  </div>
-      <img src="./assets/room2.jpg" class="room-img">
-    <div>
-    <h4>{{ products[2] }}</h4>
-    <p>월세 {{ price[2] }} 만원</p>
-    <button @click="신고수[2]++">허위매물신고</button>
-    <span> 신고수 : {{ 신고수[2] }}</span>
+  <div v-for="(원룸, i) in 원룸들" :key="i">
+    <img :src="원룸.image" class="room-img">
+    <h4 @click="모달창열렸니 = true">{{ 원룸.title }}</h4>
+    <p>월세 {{ 원룸.price }} 원</p>
   </div>
   
 </template>
 
 
 <script>
+import data from './oneroom.js';
 
 export default {
   name: 'App',
   data(){
     return {
+      원룸들 : data,
       모달창열렸니 : false,
       신고수 : [0, 0, 0],
       menus : ['Home', 'Shop', 'About'],
