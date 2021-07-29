@@ -32,9 +32,7 @@ export default {
       원룸들 : data,
       모달창열렸니 : false,
       신고수 : [0, 0, 0],
-      menus : ['Home', 'Shop', 'About'],
-      price : [160, 80, 50],
-      products : ['역삼동 원룸', '천호동 원룸', '서대문 원룸']
+      menus : ['Home', 'Shop', 'About']
     }
   },
   methods : {
